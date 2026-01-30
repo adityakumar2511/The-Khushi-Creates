@@ -43,7 +43,7 @@ export default function Workwithus() {
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <FaRocket className="text-primary text-lg mt-1" />
+                <FaRocket className="text-dark text-lg mt-1" />
                 <p className="font-body text-white/80 text-md">
                   <span className="font-semibold text-white">Startups:</span>{" "}
                   SEO + social media to build early traction
@@ -51,7 +51,7 @@ export default function Workwithus() {
               </div>
 
               <div className="flex items-start gap-4">
-                <FaShoppingCart className="text-primary text-lg mt-1" />
+                <FaShoppingCart className="text-dark text-lg mt-1" />
                 <p className="font-body text-white/80 text-md">
                   <span className="font-semibold text-white">E-commerce:</span>{" "}
                   High-ROI PPC campaigns that convert
@@ -59,7 +59,7 @@ export default function Workwithus() {
               </div>
 
               <div className="flex items-start gap-4">
-                <FaStore className="text-primary text-lg mt-1" />
+                <FaStore className="text-dark text-lg mt-1" />
                 <p className="font-body text-white/80 text-md">
                   <span className="font-semibold text-white">Local Shops:</span>{" "}
                   Geo-targeted ads for footfall & leads
@@ -67,7 +67,7 @@ export default function Workwithus() {
               </div>
 
               <div className="flex items-start gap-4">
-                <FaBriefcase className="text-primary text-lg mt-1" />
+                <FaBriefcase className="text-dark text-lg mt-1" />
                 <p className="font-body text-white/80 text-md">
                   <span className="font-semibold text-white">B2B:</span>{" "}
                   LinkedIn ads + email outreach for deal flow
