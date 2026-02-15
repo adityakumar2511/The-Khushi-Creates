@@ -91,7 +91,7 @@ export default function MainServicesSection() {
   ];
 
   return (
-    <section className="w-full bg-[#F0E3CE] px-4 sm:px-6 md:px-16 lg:px-20 py-16 md:py-24">
+        <section className="w-full bg-[#F0E3CE] px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
       <div className="max-w-7xl mx-auto">
 
         {/* Section Heading */}
@@ -102,7 +102,7 @@ export default function MainServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-4xl mx-auto mb-16"
         >
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-dark">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-black">
             OUR SERVICES
           </h2>
           
@@ -128,7 +128,7 @@ export default function MainServicesSection() {
         </motion.div>
 
         {/* Services Cards - Alternating Layout */}
-        <div className="space-y-16 md:space-y-24">
+        <div className="space-y-12 md:space-y-16">
           {services.map((service, index) => {
             const isEven = index % 2 === 0;
 
@@ -150,7 +150,7 @@ export default function MainServicesSection() {
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-[300px] md:h-[400px] object-cover transition-transform duration-500 hover:scale-110"
+                      className="w-full h-[200px] md:h-[400px] object-cover transition-transform duration-500 hover:scale-110"
                     />
                   </div>
                 </div>
