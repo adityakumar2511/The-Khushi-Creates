@@ -1,79 +1,100 @@
-import { FaGlobe, FaCode, FaPalette, FaLock } from "react-icons/fa";
+import { FaInstagram, FaVideo, FaPalette, FaGlobe, FaBullhorn } from "react-icons/fa";
 
 export default function ServicesSection() {
+  const services = [
+    {
+      icon: FaInstagram,
+      emoji: "📱",
+      title: "Social Media Management",
+      description: "Complete content planning, posting, engagement & growth strategy tailored to your business goals.",
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80",
+    },
+    {
+      icon: FaVideo,
+      emoji: "🎬",
+      title: "Reels & Short-Form Video Editing",
+      description: "High-impact videos designed to increase reach, engagement & brand recall.",
+      image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80",
+    },
+    {
+      icon: FaPalette,
+      emoji: "🎨",
+      title: "Branding & Graphic Designing",
+      description: "Logos, brand identity & creatives that make your business look premium and trustworthy.",
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+    },
+    {
+      icon: FaGlobe,
+      emoji: "🌐",
+      title: "Website Development",
+      description: "Modern, responsive websites built to convert visitors into clients.",
+      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
+    },
+    {
+      icon: FaBullhorn,
+      emoji: "📊",
+      title: "Paid Ads Management",
+      description: "Strategic ad campaigns focused on generating quality leads and measurable results.",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    },
+  ];
+
   return (
-    <section className="w-full bg-slate-50 px-4 sm:px-6 md:px-16 lg:px-20 py-20">
+    <section className="w-full bg-base px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-dark">
-            Our Premium Services
+            OUR SERVICES
           </h2>
-          <p className="mt-4 text-dark font-body text-dark ">
-            Unlock your success with our premier digital marketing services and
-            IT solutions tailored to your business needs.
+          <p className="mt-4 text-dark font-body text-lg leading-relaxed">
+            Complete social media marketing solutions designed to grow your brand 
+            and drive real business results.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-          {/* Card */}
-          <div className="bg-white rounded-xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.4)]  transition-transform duration-300 hover:-translate-y-4">
-            <FaGlobe className="text-white text-3xl mb-6 bg-primary w-12 h-12 rounded-full p-3" />
-            <h3 className="font-heading text-lg font-semibold text-dark">
-              Digital Marketing
-            </h3>
-            <p className="mt-3 font-body text-sm text-dark leading-relaxed">
-              Boost your online presence with our comprehensive digital
-              marketing services.
-            </p>
-            <a className="mt-5 text-primary font-medium text-sm flex items-center gap-1 hover:gap-2 transition-all" href="#">
-              Learn more →
-            </a>
-          </div>
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={index}
+                className="bg-white rounded-xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:-translate-y-4"
+              >
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  />
+                  {/* Overlay with icon */}
+                  {/* <div className="absolute inset-0 bg-dark/40 flex items-center justify-center">
+                    <div className="flex items-center gap-3">
+                      <Icon className="text-white text-3xl bg-primary w-16 h-16 rounded-full p-4" />
+                      <span className="text-4xl">{service.emoji}</span>
+                    </div>
+                  </div> */}
+                </div>
 
-          <div className="bg-white rounded-xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.4)]  transition-transform duration-300 hover:-translate-y-4">
-            <FaCode className="text-white text-3xl mb-6 bg-primary w-12 h-12 rounded-full p-3" />
-            <h3 className="font-heading text-lg font-semibold text-dark">
-              Web Development
-            </h3>
-            <p className="mt-3 font-body text-sm text-dark leading-relaxed">
-              Custom website development with stunning design and powerful
-              functionality.
-            </p>
-            <a className="mt-5 text-primary font-medium text-sm flex items-center gap-1 hover:gap-2 transition-all" href="#">
-              Learn more →
-            </a>
-          </div>
-
-          <div className="bg-white rounded-xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.4)]  transition-transform duration-300 hover:-translate-y-4">
-            <FaPalette className="text-white text-3xl mb-6 bg-primary w-12 h-12 rounded-full p-3" />
-            <h3 className="font-heading text-lg font-semibold text-dark">
-              UI / UX Design
-            </h3>
-            <p className="mt-3 font-body text-sm text-dark leading-relaxed">
-              Create seamless user experiences with our expert UI/UX design
-              services.
-            </p>
-            <a className="mt-5 text-primary font-medium text-sm flex items-center gap-1 hover:gap-2 transition-all" href="#">
-              Learn more →
-            </a>
-          </div>
-
-          <div className="bg-white rounded-xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.4)]  transition-transform duration-300 hover:-translate-y-4">
-            <FaLock className="text-white text-3xl mb-6 bg-primary w-12 h-12 rounded-full p-3" />
-            <h3 className="font-heading text-lg font-semibold text-dark">
-              Branding
-            </h3>
-            <p className="mt-3 font-body text-sm text-dark leading-relaxed">
-              Build a strong brand identity that resonates with your audience.
-            </p>
-            <a className="mt-5 text-primary font-medium text-sm flex items-center gap-1 hover:gap-2 transition-all" href="#">
-              Learn more →
-            </a>
-          </div>
+                {/* Content */}
+                <div className="p-8">
+                  <h3 className="font-heading text-xl font-semibold text-dark">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 font-body text-md text-dark leading-relaxed">
+                    {service.description}
+                  </p>
+                  <a className="mt-5 text-primary font-medium text-md flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                    Know more →
+                  </a>
+                </div>
+              </div>
+            );
+          })}
 
         </div>
       </div>

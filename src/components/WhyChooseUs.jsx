@@ -1,9 +1,10 @@
 import {
-  FaMapMarkedAlt,
-  FaChartLine,
-  FaEye,
-  FaWhatsapp,
-  FaExpandArrowsAlt,
+  FaChartBar,
+  FaLightbulb,
+  FaStar,
+  FaComments,
+  FaRocket,
+  FaHeart,
 } from "react-icons/fa";
 
 export default function WhyChooseUs() {
@@ -13,88 +14,96 @@ export default function WhyChooseUs() {
 
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-base">
-            Your Unfair Advantage in Prayagraj’s Competitive Market
-          </h2>
-          <p className="mt-4 font-body text-base">
-            Local expertise. Proven systems. Transparent execution.
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="text-3xl">💎</span>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-base">
+              WHY CHOOSE THE KHUSHI CREATES?
+            </h2>
+          </div>
+          <p className="mt-4 font-body text-base text-base/90">
+            We treat your brand like our own.
           </p>
         </div>
 
         {/* Advantage Grid */}
-        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
 
-          {/* Card 1 */}
-          <div className="bg-white rounded-xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition">
-            <FaMapMarkedAlt className="text-primary text-3xl mb-5" />
+          {/* Card 1 - Strategy First */}
+          <div className="bg-white rounded-xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition text-center">
+            <div className="flex items-center justify-center mb-5">
+              <div className="relative">
+                <FaChartBar className="text-white bg-primary text-2xl w-16 h-16 rounded-full p-4" />
+                <span className="absolute -top-1 -right-1 text-xl bg-white rounded-full w-7 h-7 flex items-center justify-center">✔</span>
+              </div>
+            </div>
             <h3 className="font-heading text-lg font-semibold text-dark">
-              Local Market Masters
+              Strategy First, Always
             </h3>
-            <p className="mt-3 font-body text-sm text-dark leading-relaxed">
-              UP-specific strategies crafted for Prayagraj audiences with
-              bilingual Hindi & English communication.
-            </p>
           </div>
 
-          {/* Card 2 */}
-          <div className="bg-white rounded-xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition">
-            <FaChartLine className="text-primary text-3xl mb-5" />
+          {/* Card 2 - Creative + Data-Driven */}
+          <div className="bg-white rounded-xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition text-center">
+            <div className="flex items-center justify-center mb-5">
+              <div className="relative">
+                <FaLightbulb className="text-white bg-primary text-2xl w-16 h-16 rounded-full p-4" />
+                <span className="absolute -top-1 -right-1 text-xl bg-white rounded-full w-7 h-7 flex items-center justify-center">✔</span>
+              </div>
+            </div>
             <h3 className="font-heading text-lg font-semibold text-dark">
-              Guaranteed ROI
+              Creative + Data-Driven Execution
             </h3>
-            <p className="mt-3 font-body text-sm text-dark leading-relaxed">
-              250% average growth delivered consistently — or we work
-              free until results show.
-            </p>
           </div>
 
-          {/* Card 3 */}
-          <div className="bg-white rounded-xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition">
-            <FaEye className="text-primary text-3xl mb-5" />
+          {/* Card 3 - Consistent Brand Presence */}
+          <div className="bg-white rounded-xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition text-center">
+            <div className="flex items-center justify-center mb-5">
+              <div className="relative">
+                <FaStar className="text-white bg-primary text-2xl w-16 h-16 rounded-full p-4" />
+                <span className="absolute -top-1 -right-1 text-xl bg-white rounded-full w-7 h-7 flex items-center justify-center">✔</span>
+              </div>
+            </div>
             <h3 className="font-heading text-lg font-semibold text-dark">
-              Full Transparency
+              Consistent & Professional Brand Presence
             </h3>
-            <p className="mt-3 font-body text-sm text-dark leading-relaxed">
-              Real-time dashboards showing traffic, leads, conversions
-              and ROI — no hidden numbers.
-            </p>
           </div>
 
-          {/* Card 4 */}
-          <div className="bg-white rounded-xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition">
-            <FaWhatsapp className="text-primary text-3xl mb-5" />
+          {/* Card 4 - Clear Communication */}
+          <div className="bg-white rounded-xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition text-center">
+            <div className="flex items-center justify-center mb-5">
+              <div className="relative">
+                <FaComments className="text-white bg-primary text-2xl w-16 h-16 rounded-full p-4" />
+                <span className="absolute -top-1 -right-1 text-xl bg-white rounded-full w-7 h-7 flex items-center justify-center">✔</span>
+              </div>
+            </div>
             <h3 className="font-heading text-lg font-semibold text-dark">
-              24/7 Support
+              Clear Communication & Transparency
             </h3>
-            <p className="mt-3 font-body text-sm text-dark leading-relaxed">
-              WhatsApp-ready pivots, quick updates, and instant action
-              when the market shifts.
-            </p>
           </div>
 
-          {/* Card 5 */}
-          <div className="bg-white rounded-xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition sm:col-span-2 lg:col-span-1">
-            <FaExpandArrowsAlt className="text-primary text-3xl mb-5" />
+          {/* Card 5 - Real Business Growth */}
+          <div className="bg-white rounded-xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition text-center sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center justify-center mb-5">
+              <div className="relative">
+                <FaRocket className="text-white bg-primary text-2xl w-16 h-16 rounded-full p-4" />
+                <span className="absolute -top-1 -right-1 text-xl bg-white rounded-full w-7 h-7 flex items-center justify-center">✔</span>
+              </div>
+            </div>
             <h3 className="font-heading text-lg font-semibold text-dark">
-              Scalable Solutions
+              Focused on Real Business Growth
             </h3>
-            <p className="mt-3 font-body text-sm text-darkleading-relaxed">
-              From ₹10k startup plans to ₹5L+ enterprise campaigns —
-              scale smoothly without disruption.
-            </p>
           </div>
 
         </div>
 
-        {/* Social Proof */}
-        {/* <div className="mt-20 text-center">
-          <p className="font-heading text-lg font-semibold text-dark">
-            50+ Prayagraj brands crushing goals with us.
-          </p>
-          <p className="mt-1 font-body text-primary font-medium">
-            Ready to be the next success story?
-          </p>
-        </div> */}
+        {/* Tagline */}
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center gap-3 bg-white rounded-2xl shadow-lg px-8 py-5">
+            <FaHeart className="text-primary text-2xl" />
+            <p className="font-heading text-lg md:text-xl font-semibold text-dark">
+              We treat your brand like our own.
+            </p>
+          </div>
+        </div>
 
       </div>
     </section>

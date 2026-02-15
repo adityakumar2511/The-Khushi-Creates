@@ -1,129 +1,174 @@
+import { motion } from "framer-motion";
 import {
   FaSearch,
   FaLightbulb,
+  FaPencilAlt,
+  FaChartLine,
   FaRocket,
-  FaChartBar,
-  FaArrowRight,
 } from "react-icons/fa";
 
 export default function ProcessSection() {
+  const steps = [
+    {
+      number: "1️⃣",
+      icon: FaSearch,
+      title: "Understand Your Business & Goals",
+      color: "bg-dark",
+      delay: 0.1,
+    },
+    {
+      number: "2️⃣",
+      icon: FaLightbulb,
+      title: "Build a Custom Growth Strategy",
+      color: "bg-primary",
+      delay: 0.2,
+    },
+    {
+      number: "3️⃣",
+      icon: FaPencilAlt,
+      title: "Create High-Quality Content",
+      color: "bg-dark",
+      delay: 0.3,
+    },
+    {
+      number: "4️⃣",
+      icon: FaChartLine,
+      title: "Optimize Using Analytics",
+      color: "bg-primary",
+      delay: 0.4,
+    },
+    {
+      number: "5️⃣",
+      icon: FaRocket,
+      title: "Scale with Performance Marketing",
+      color: "bg-dark",
+      delay: 0.5,
+    },
+  ];
+
   return (
-    <section className="w-full bg-base px-4 sm:px-6 md:px-16 lg:px-20 py-24">
+    <section className="w-full bg-[#E2ECB1] px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
-        <div className="text-center max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-dark">
-            Our Proven 4-Step Framework
+            OUR PROCESS
           </h2>
-          <p className="mt-4 font-body text-dark">
-            Delivering results in just 30 days.  
-            Transparent from discovery to scale.
+          <p className="mt-4 font-body text-dark text-lg">
+            No shortcuts. Just smart growth.
           </p>
+        </motion.div>
+
+        {/* Timeline Container */}
+        <div className="relative max-w-5xl mx-auto">
+          
+          {/* Curved Line SVG */}
+          <svg 
+            className="absolute left-1/2 top-0 h-full w-full -translate-x-1/2 pointer-events-none hidden md:block"
+            style={{ zIndex: 0 }}
+          >
+            <motion.path
+              d="M 50% 80 Q 30% 220, 50% 360 T 50% 720 T 50% 1080"
+              stroke="#ff624f"
+              strokeWidth="3"
+              fill="none"
+              strokeDasharray="10 5"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 0.3 }}
+              viewport={{ once: true }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+            />
+          </svg>
+
+          {/* Steps */}
+          <div className="relative space-y-16 md:space-y-10">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              const isEven = index % 2 === 0;
+              
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: step.delay }}
+                  className={`flex items-center gap-6 ${
+                    isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+                  } flex-col`}
+                >
+                  {/* Empty space for alternating layout */}
+                  <div className="hidden md:block flex-1" />
+
+                  {/* Circle with Icon */}
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                    className={`relative ${step.color} w-16 h-16 rounded-full flex items-center justify-center shadow-md z-10 flex-shrink-0`}
+                  >
+                    <Icon className="text-white text-2xl" />
+                    
+                    {/* Glow effect */}
+                    <div className={`absolute inset-0 ${step.color} rounded-full opacity-40 animate-pulse`} />
+                  </motion.div>
+
+                  {/* Content Card */}
+                  <motion.div
+                    whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}
+                    className={`flex-1 bg-white rounded-2xl p-6 md:p-8 shadow-lg ${
+                      isEven ? 'md:text-right' : 'md:text-left'
+                    } text-center max-w-md`}
+                  >
+                    <div className={`flex items-center gap-3 mb-3 ${
+                      isEven ? 'md:justify-end' : 'md:justify-start'
+                    } justify-center`}>
+                      <span className="text-xs font-semibold text-base bg-primary p-2 pl-4 pr-4 border rounded-full font-body uppercase tracking-wider">
+                        STEP {index + 1}
+                      </span>
+                    </div>
+                    
+                    <h3 className="font-heading text-lg md:text-xl font-bold text-dark leading-tight">
+                      {step.title}
+                    </h3>
+
+                    {/* Decorative line */}
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "60px" }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: step.delay + 0.3 }}
+                      className={`h-1 ${step.color} rounded-full mt-4 ${
+                        isEven ? 'md:ml-auto' : 'md:mr-auto'
+                      } mx-auto`}
+                    />
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Steps */}
-        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-
-          {/* STEP 01 */}
-          <div className="relative">
-            {/* Card */}
-            <div className="bg-white rounded-xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.4)]  transition-transform duration-300 hover:-translate-y-4">
-              <div className="w-12 h-12 flex items-center justify-center mb-5">
-                <FaSearch className="bg-dark text-white w-12 h-12 rounded-full p-3" />
-              </div>
-
-              <span className="text-xs font-semibold text-primary font-body">
-                01 · DISCOVERY
-              </span>
-              <h3 className="mt-2 font-heading text-base font-semibold text-dark">
-                Free Audit
-              </h3>
-              <p className="mt-3 font-body text-sm text-dark leading-relaxed">
-                Complete audit of your current setup to identify gaps and
-                opportunities.
-              </p>
-            </div>
-
-            {/* Arrow (Desktop only) */}
-            <FaArrowRight className="hidden lg:block absolute -right-7 top-1/2 -translate-y-1/2 text-primary text-xl" />
+        {/* Bottom Tagline */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-24 text-center"
+        >
+          <div className="inline-block bg-primary rounded-2xl shadow-2xl px-10 py-6 text-white">
+            <p className="font-heading text-md md:text-xl font-bold">
+              No shortcuts. Just smart growth. 🚀
+            </p>
           </div>
-
-          {/* STEP 02 */}
-          <div className="relative">
-            <div className="bg-white rounded-xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.4)]  transition-transform duration-300 hover:-translate-y-4">
-              <div className="w-12 h-12 flex items-center justify-center mb-5">
-                <FaLightbulb className="bg-dark text-white w-12 h-12 rounded-full p-3" />
-              </div>
-
-              <span className="text-xs font-semibold text-primary font-body">
-                02 · STRATEGY
-              </span>
-              <h3 className="mt-2 font-heading text-base font-semibold text-dark">
-                90-Day Roadmap
-              </h3>
-              <p className="mt-3 font-body text-sm text-dark leading-relaxed">
-                Custom strategy with KPIs, timelines,
-                and measurable goals.
-              </p>
-            </div>
-
-            <FaArrowRight className="hidden lg:block absolute -right-7 top-1/2 -translate-y-1/2 text-primary text-xl" />
-          </div>
-
-          {/* STEP 03 */}
-          <div className="relative">
-            <div className="bg-white rounded-xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.4)]  transition-transform duration-300 hover:-translate-y-4">
-              <div className="w-12 h-12 flex items-center justify-center mb-5">
-                <FaRocket className="bg-dark text-white w-12 h-12 rounded-full p-3" />
-              </div>
-
-              <span className="text-xs font-semibold text-primary font-body">
-                03 · EXECUTION
-              </span>
-              <h3 className="mt-2 font-heading text-base font-semibold text-dark">
-                Campaign Launch
-              </h3>
-              <p className="mt-3 font-body text-sm text-dark leading-relaxed">
-                Campaigns go live only after your approval
-                for complete transparency.
-              </p>
-            </div>
-
-            <FaArrowRight className="hidden lg:block absolute -right-7 top-1/2 -translate-y-1/2 text-primary text-xl" />
-          </div>
-
-          {/* STEP 04 */}
-          <div>
-            <div className="bg-white rounded-xl p-8 shadow-[0_8px_24px_rgba(0,0,0,0.4)]  transition-transform duration-300 hover:-translate-y-4">
-              <div className="w-12 h-12 flex items-center justify-center mb-5">
-                <FaChartBar className="bg-dark text-white w-12 h-12 rounded-full p-3" />
-              </div>
-
-              <span className="text-xs font-semibold text-primary font-body">
-                04 · REPORTING
-              </span>
-              <h3 className="mt-2 font-heading text-base font-semibold text-dark">
-                Transparent Reports
-              </h3>
-              <p className="mt-3 font-body text-sm text-dark leading-relaxed">
-                Monthly dashboards covering traffic,
-                leads, conversions, and ROI.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Trust Line */}
-        <div className="mt-20 text-center">
-          <p className="font-heading text-lg font-semibold text-dark">
-            100+ businesses transformed.
-          </p>
-          <p className="mt-1 font-body text-primary font-medium">
-            Your turn next.
-          </p>
-        </div>
+        </motion.div>
 
       </div>
     </section>
