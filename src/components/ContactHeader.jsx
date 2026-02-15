@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function AboutHeader() {
+export default function ContactHeader() {
   return (
     <section 
       className="relative w-full h-[250px] md:h-[300px] bg-cover bg-center flex items-center"
@@ -17,7 +17,7 @@ export default function AboutHeader() {
           
           {/* Main Heading */}
           <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-1 md:mb-2">
-            About
+            Contact
           </h1>
 
           {/* Breadcrumb */}
@@ -30,7 +30,7 @@ export default function AboutHeader() {
             </Link>
             <span className="text-white font-medium">|</span>
             <span className="font-body text-primary font-medium">
-              About
+              Contact
             </span>
           </div>
 

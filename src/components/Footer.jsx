@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import { 
-  FaFacebookF, 
-  FaInstagram, 
-  FaTwitter, 
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTwitter,
   FaLinkedinIn,
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt
 } from 'react-icons/fa';
-import logo from "../assets/logo.png";
+import logo from "../assets/footerLogo.png";
 
 const footerLinks = {
   company: [
@@ -36,17 +36,17 @@ export default function Footer() {
   return (
     <footer className="bg-dark text-base shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        
+
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          
+
           {/* Logo & About */}
           <div className="lg:col-span-1 space-y-3 center">
             <div className="flex items-center gap-3 justify-center lg:justify-start">
               <img src={logo} alt="BrandCreates Logo" className="h-12 w-auto " />
             </div>
 
-            <p className="font-body text-sm leading-relaxed max-w-md text-base/80 text-center lg:text-left ">
+            <p className="font-body text-lg leading-relaxed max-w-md text-base text-center lg:text-left pt-4">
               We are a creative digital marketing agency dedicated to helping brands grow
               their online presence through innovative strategies and compelling content.
             </p>
@@ -71,7 +71,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-xl font-bold font-heading mb-3 text-base text-center">
+            <h3 className="text-3xl font-bold font-heading mb-3 text-base text-center">
               Company
             </h3>
             <ul className="space-y-2 font-body text-center ">
@@ -79,7 +79,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.path}
-                    className="text-sm text-base/80 hover:text-base hover:font-semibold transition"
+                    className="text-lg text-base/80 hover:text-base hover:font-semibold transition"
                   >
                     {link.name}
                   </Link>
@@ -90,7 +90,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-xl font-bold font-heading mb-3 text-center text-base">
+            <h3 className="text-3xl font-bold font-heading mb-3 text-center text-base">
               Services
             </h3>
             <ul className="space-y-2 text-center font-body">
@@ -98,7 +98,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.path}
-                    className="text-sm text-base/80 hover:text-base hover:font-semibold transition"
+                    className="text-lg text-base/80 hover:text-base hover:font-semibold transition"
                   >
                     {link.name}
                   </Link>
@@ -109,21 +109,31 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-xl font-bold font-heading mb-3 text-base text-center lg:text-left">
+            <h3 className="text-3xl font-bold font-heading mb-3 text-base text-center lg:text-left">
               Get in Touch
             </h3>
-            <ul className="space-y-3 text-sm text-base/80 text-center lg:text-left">
+            <ul className="space-y-3 text-lg text-base/80 text-center lg:text-left">
               <li className="flex gap-3 items-center justify-center lg:justify-start">
-                <FaEnvelope className="text-primary mt-1" />
-                <span className="font-body">hello@brandcreates.com</span>
+                <FaEnvelope className="text-primary mt-1 w-5 h-5" />
+                <span className="font-body"><a
+                  href="mailto:thekhushicreates@gmail.com"
+                  className="font-body text-base hover:text-primary transition"
+                >
+                  thekhushicreates@gmail.com
+                </a></span>
               </li>
               <li className="flex gap-3 items-center justify-center lg:justify-start">
-                <FaPhone className="text-primary mt-1" />
-                <span className="font-body">+91 98765 43210</span>
+                <FaPhone className="text-primary mt-1 h-5 w-5" />
+                <span className="font-body">
+                  <a href="tel:+916387297711" className="hover:text-primary transition">+91 6387297711, </a><br/>
+                  <a href="tel:+917905844454" className="hover:text-primary transition">+91 7905844454, </a>
+                  <br/>
+                  <a href="tel:+918887522315" className="hover:text-primary transition">+91 8887522315</a>
+                </span>
               </li>
               <li className="flex gap-3 items-center justify-center lg:justify-start">
-                <FaMapMarkerAlt className="text-primary mt-1" />
-                <span className="font-body">Marketing Hub, Lucknow, UP</span>
+                <FaMapMarkerAlt className="text-primary mt-1 h-5 w-5" />
+                <span className="font-body hover:text-primary transition">India (Serving clients nationwide)</span>
               </li>
             </ul>
           </div>
@@ -131,7 +141,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-base/20 pt-4">
-          <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-sm text-base/70 font-body">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-md text-base/70 font-body">
             <p className="text-center">
               © {new Date().getFullYear()} The Khushi Creates. All rights reserved. Created By <a href="https://aditya-kumar-2511.vercel.app/" className="text-primary hover:underline" target="_blank">Aditya Kumar</a>
             </p>
