@@ -3,7 +3,7 @@ import { FaRocket, FaUsers, FaChartLine, FaHeart } from "react-icons/fa";
 
 export default function HomeAbout() {
   return (
-    <section className="w-full bg-white px-4 sm:px-6 md:px-16 lg:px-20 py-16 md:py-24">
+    <section className="w-full bg-base px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
       <div className="max-w-7xl mx-auto">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
