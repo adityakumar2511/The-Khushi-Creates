@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-
+import ServiceImage from "../assets/service.jpeg";
 export default function ServicesHero() {
   return (
     <section 
-      className="relative w-full h-[250px] md:h-[300px] bg-cover bg-center flex items-center"
+      className="relative w-full h-[200px] md:h-[300px] bg-cover bg-center flex items-center"
       style={{ 
-        backgroundImage: `url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&q=80')` 
+        backgroundImage: `url(${ServiceImage})` 
       }}
     >
       {/* Dark Overlay */}

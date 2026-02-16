@@ -5,10 +5,10 @@ export default function HeroSection() {
   return (
     <section className="w-full bg-base px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* MAIN HERO - LEFT CONTENT & RIGHT VIDEO */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center mb-16 md:mb-24">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+
           {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -27,18 +27,26 @@ export default function HeroSection() {
             </p>
 
             <p className="font-body mt-4 text-base md:text-lg text-dark leading-relaxed">
-              At The Khushi Creates, we help businesses turn their social media into a powerful growth 
+              At The Khushi Creates, we help businesses turn their social media into a powerful growth
               engine through strategy, creativity, and performance marketing.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-              <button className="bg-primary font-body hover:bg-primary/90 text-white px-8 py-4 rounded-lg font-semibold shadow-md transition text-base md:text-lg">
+              {/* Call Button */}
+              <a
+                href="tel:+916387297711"
+                className="bg-primary font-body hover:bg-primary/90 text-white px-8 py-4 rounded-lg font-semibold shadow-md transition text-base md:text-lg text-center"
+              >
                 Book a Free Strategy Call
-              </button>
+              </a>
 
-              <button className="border-2 font-body border-dark hover:border-primary hover:text-primary text-dark px-8 py-4 rounded-lg font-semibold transition text-base md:text-lg">
+              {/* Services Page Link */}
+              <a
+                href="/services"
+                className="border-2 font-body border-dark hover:border-primary hover:text-primary text-dark px-8 py-4 rounded-lg font-semibold transition text-base md:text-lg text-center"
+              >
                 View Our Services
-              </button>
+              </a>
             </div>
           </motion.div>
 
@@ -51,11 +59,11 @@ export default function HeroSection() {
           >
             {/* Video Container with 16:9 aspect ratio */}
             <div className="relative w-full aspect-video bg-dark/5 rounded-2xl overflow-hidden shadow-2xl">
-              
+
               {/* Replace this div with your actual video element */}
               {/* Example: <video src="/path/to/video.mp4" controls className="w-full h-full object-cover" /> */}
               {/* Or YouTube embed: <iframe src="https://www.youtube.com/embed/VIDEO_ID" className="w-full h-full" allowFullScreen /> */}
-              
+
               {/* Placeholder - Remove this when adding real video */}
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/20 to-dark/10">
                 <div className="text-center">
@@ -85,42 +93,6 @@ export default function HeroSection() {
           </motion.div>
 
         </div>
-
-        {/* RESULTS-DRIVEN SECTION */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="max-w-4xl mx-auto text-center px-4"
-        >
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="text-2xl md:text-3xl">🚀</span>
-            <h2 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-dark">
-              RESULTS-DRIVEN SOCIAL MEDIA MARKETING
-            </h2>
-          </div>
-
-          <p className="font-body text-base md:text-lg text-dark leading-relaxed mb-4">
-            We don't believe in random posting.
-            <br className="hidden sm:block" />
-            We believe in <span className="font-semibold text-primary">structured growth</span>.
-          </p>
-
-          <p className="font-body text-base md:text-lg text-dark leading-relaxed max-w-3xl mx-auto mb-6">
-            Our approach combines branding, content strategy, audience psychology, and performance 
-            marketing to create a social presence that actually converts.
-          </p>
-
-          <div className="inline-block bg-white rounded-xl shadow-lg px-8 py-6">
-            <p className="font-body text-base md:text-lg text-dark">
-              Because likes are good.
-            </p>
-            <p className="font-body text-lg md:text-xl font-semibold text-primary mt-2">
-              But leads & sales are better.
-            </p>
-          </div>
-        </motion.div>
-
       </div>
     </section>
   );

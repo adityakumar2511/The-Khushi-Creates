@@ -1,5 +1,6 @@
 import React from "react";
 import HeroSection from "../components/HeroSection";
+import ResultDriveSection from "../components/ResultDriveSection";
 import Service from "../components/Service";
 import Process from "../components/Process";
 import WhyChooseUs from "../components/WhyChooseUs";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <div>
       <HeroSection />
+      <ResultDriveSection />
       <Service />
       <WhyChooseUs />
       <Process />

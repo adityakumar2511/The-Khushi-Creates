@@ -1,6 +1,15 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaInstagram } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
+import {
+    FaFacebookF,
+    FaInstagram,
+    FaTwitter,
+    FaLinkedinIn,
+    FaEnvelope,
+    FaPhone,
+    FaMapMarkerAlt,
+} from 'react-icons/fa';
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({
@@ -13,6 +22,16 @@ export default function ContactSection() {
         goals: ""
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+
+    const socialLinks = [
+        { name: "Facebook", icon: FaFacebookF, url: "https://www.facebook.com/Thekhushicreates/" },
+        { name: "Instagram", icon: FaInstagram, url: "https://instagram.com/thekhushicreates/" },
+        { name: "Twitter", icon: FaTwitter, url: "https://www.behance.net/khushijaiswal30" },
+        { name: "LinkedIn", icon: FaLinkedinIn, url: "https://www.linkedin.com/in/khushijaiswal20802/" },
+    ];
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -20,11 +39,62 @@ export default function ContactSection() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission here
-        console.log("Form submitted:", formData);
-        alert("Thank you! We'll get back to you within 24 hours.");
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        // EmailJS configuration
+        const serviceID = 'service_hwuj8as'; // Replace with your EmailJS service ID
+        const templateID = 'template_irv02uj'; // Replace with your EmailJS template ID
+        const publicKey = '99zEqRuAQi-zgzoPV'; // Replace with your EmailJS public key
+
+        // Template parameters
+        const templateParams = {
+            from_name: formData.fullName,
+            business_name: formData.businessName,
+            contact_number: formData.contactNumber,
+            email: formData.email,
+            services: formData.services,
+            budget: formData.budget,
+            goals: formData.goals,
+            to_email: 'thekhushicreates@gmail.com' // Your receiving email
+        };
+
+        try {
+            const response = await emailjs.send(
+                serviceID,
+                templateID,
+                templateParams,
+                publicKey
+            );
+
+            console.log('Email sent successfully!', response.status, response.text);
+            setSubmitStatus('success');
+            
+            // Reset form
+            setFormData({
+                fullName: "",
+                businessName: "",
+                contactNumber: "",
+                email: "",
+                services: "",
+                budget: "",
+                goals: ""
+            });
+
+            // Clear success message after 5 seconds
+            setTimeout(() => setSubmitStatus(null), 5000);
+
+        } catch (error) {
+            console.error('Failed to send email:', error);
+            setSubmitStatus('error');
+            
+            // Clear error message after 5 seconds
+            setTimeout(() => setSubmitStatus(null), 5000);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -71,9 +141,6 @@ export default function ContactSection() {
 
                                 {/* Phone */}
                                 <div className="flex items-start gap-4">
-                                    {/* <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                        <FaPhone className="text-white text-lg" />
-                    </div> */}
                                     <motion.div
                                         animate={{ rotate: 100 }}
                                         transition={{
@@ -119,27 +186,25 @@ export default function ContactSection() {
                                     <div>
                                         <h4 className="font-heading font-semibold text-dark mb-2">Location</h4>
                                         <p className="font-body text-dark">
-                                            India (Serving clients nationwide)
+                                            Mutthiganj, Prayagraj
+                                            Uttar Pradesh, India 211003
                                         </p>
                                     </div>
                                 </div>
 
-                                {/* Instagram */}
+                                {/* Social Links */}
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                                        <FaInstagram className="text-white text-lg" />
-                                    </div>
-                                    <div>
-                                        <h4 className="font-heading font-semibold text-dark mb-2">Instagram</h4>
+                                    {socialLinks.map((social) => (
                                         <a
-                                            href="https://instagram.com/thekhushicreates"
+                                            key={social.name}
+                                            href={social.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="font-body text-dark hover:text-primary transition"
+                                            className="text-xl p-4 rounded-full bg-primary text-white hover:bg-primary/80 transition-all duration-300 hover:scale-110"
                                         >
-                                            @thekhushicreates
+                                            <social.icon />
                                         </a>
-                                    </div>
+                                    ))}
                                 </div>
 
                             </div>
@@ -166,6 +231,18 @@ export default function ContactSection() {
                                 </p>
                             </div>
 
+                            {/* Success/Error Messages */}
+                            {submitStatus === 'success' && (
+                                <div className="mb-6 p-4 bg-green-500 text-white rounded-lg font-body">
+                                    ✓ Thank you! We'll get back to you within 24 hours.
+                                </div>
+                            )}
+                            {submitStatus === 'error' && (
+                                <div className="mb-6 p-4 bg-red-500 text-white rounded-lg font-body">
+                                    ✗ Something went wrong. Please try again or email us directly.
+                                </div>
+                            )}
+
                             {/* Form */}
                             <form onSubmit={handleSubmit} className="space-y-5">
 
@@ -180,7 +257,8 @@ export default function ContactSection() {
                                         value={formData.fullName}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-primary focus:outline-none font-body bg-white  text-dark"
+                                        disabled={isSubmitting}
+                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body bg-white text-dark disabled:opacity-50"
                                         placeholder="Enter your full name"
                                     />
                                 </div>
@@ -196,7 +274,8 @@ export default function ContactSection() {
                                         value={formData.businessName}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-primary focus:outline-none font-body bg-white text-dark"
+                                        disabled={isSubmitting}
+                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body bg-white text-dark disabled:opacity-50"
                                         placeholder="Enter your business name"
                                     />
                                 </div>
@@ -212,7 +291,8 @@ export default function ContactSection() {
                                         value={formData.contactNumber}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-primary focus:outline-none font-body bg-white text-dark"
+                                        disabled={isSubmitting}
+                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body bg-white text-dark disabled:opacity-50"
                                         placeholder="+91 XXXXXXXXXX"
                                     />
                                 </div>
@@ -228,7 +308,8 @@ export default function ContactSection() {
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-primary focus:outline-none font-body bg-white text-dark"
+                                        disabled={isSubmitting}
+                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body bg-white text-dark disabled:opacity-50"
                                         placeholder="your@email.com"
                                     />
                                 </div>
@@ -243,7 +324,8 @@ export default function ContactSection() {
                                         value={formData.services}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-primary focus:outline-none font-body bg-white text-dark"
+                                        disabled={isSubmitting}
+                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body bg-white text-dark disabled:opacity-50"
                                     >
                                         <option value="">Select a service</option>
                                         <option value="social-media">Social Media Management</option>
@@ -265,14 +347,14 @@ export default function ContactSection() {
                                         value={formData.budget}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-primary focus:outline-none font-body bg-white text-dark"
+                                        disabled={isSubmitting}
+                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body bg-white text-dark disabled:opacity-50"
                                     >
                                         <option value="">Select your budget</option>
                                         <option value="5k-10k">₹5,000 - ₹10,000</option>
                                         <option value="10k-25k">₹10,000 - ₹25,000</option>
                                         <option value="25k-50k">₹25,000 - ₹50,000</option>
                                         <option value="50k-1l">₹50,000 - ₹1,00,000</option>
-
                                     </select>
                                 </div>
 
@@ -286,8 +368,9 @@ export default function ContactSection() {
                                         value={formData.goals}
                                         onChange={handleChange}
                                         required
+                                        disabled={isSubmitting}
                                         rows="4"
-                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-primary focus:outline-none font-body resize-none bg-white text-dark"
+                                        className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body resize-none bg-white text-dark disabled:opacity-50"
                                         placeholder="What are your main goals? What challenges are you facing?"
                                     />
                                 </div>
@@ -295,9 +378,10 @@ export default function ContactSection() {
                                 {/* Submit Button */}
                                 <button
                                     type="submit"
-                                    className="w-full font-body font-bold py-4 rounded-lg transition shadow-lg text-lg bg-white text-dark"
+                                    disabled={isSubmitting}
+                                    className="w-full font-body font-bold py-4 rounded-lg transition shadow-lg text-lg bg-white text-dark hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    Schedule My Free Consultation
+                                    {isSubmitting ? 'Sending...' : 'Schedule My Free Consultation'}
                                 </button>
 
                             </form>

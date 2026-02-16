@@ -1,5 +1,5 @@
 import { FaPhoneAlt, FaWhatsapp, FaEnvelope } from "react-icons/fa";
-import ctaBg from "../assets/cta-bg.jpg"; // <-- apni image yahan rakho
+import ctaBg from "../assets/cta-bg.jpeg"; // <-- apni image yahan rakho
 
 export default function CTA() {
   return (
@@ -8,7 +8,7 @@ export default function CTA() {
       style={{ backgroundImage: `url(${ctaBg})` }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-dark/85"></div>
+      <div className="absolute inset-0 bg-black/80"></div>
 
       {/* Content */}
       <div className="relative max-w-4xl mx-auto text-center text-white">
@@ -27,9 +27,12 @@ export default function CTA() {
 
         {/* CTA Button */}
         <div className="mt-8">
-          <button className="bg-primary hover:bg-primary/90 text-white px-10 md:px-14 py-4 md:py-5 rounded-xl text-base md:text-lg font-bold shadow-2xl transition font-body">
-            Schedule Your Free Strategy Call Today
-          </button>
+          <a
+                href="tel:+916387297711"
+                className="bg-primary font-body hover:bg-primary text-white px-8 py-4 rounded-lg font-semibold shadow-md transition text-base md:text-lg text-center"
+              >
+                Book a Free Strategy Call
+              </a>
         </div>
 
         {/* Trust Badge */}

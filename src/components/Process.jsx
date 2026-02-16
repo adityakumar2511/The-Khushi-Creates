@@ -47,7 +47,7 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section className="w-full bg-[#E2ECB1] px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
+    <section className="w-full bg-base px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
@@ -100,7 +100,7 @@ export default function ProcessSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: step.delay }}
-                  className={`flex items-center gap-6 ${
+                  className={`flex items-center gap-6  ${
                     isEven ? 'md:flex-row' : 'md:flex-row-reverse'
                   } flex-col`}
                 >
@@ -122,7 +122,7 @@ export default function ProcessSection() {
                   {/* Content Card */}
                   <motion.div
                     whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}
-                    className={`flex-1 bg-white rounded-2xl p-6 md:p-8 shadow-lg ${
+                    className={`flex-1 bg-[#E2ECB1] rounded-2xl p-6 md:p-8 shadow-lg ${
                       isEven ? 'md:text-right' : 'md:text-left'
                     } text-center max-w-md`}
                   >
@@ -165,7 +165,7 @@ export default function ProcessSection() {
         >
           <div className="inline-block bg-primary rounded-2xl shadow-2xl px-10 py-6 text-white">
             <p className="font-heading text-md md:text-xl font-bold">
-              No shortcuts. Just smart growth. 🚀
+              No shortcuts. Just smart growth.
             </p>
           </div>
         </motion.div>

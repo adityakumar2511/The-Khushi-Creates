@@ -1,9 +1,14 @@
 import { motion } from "framer-motion";
-
+import Ads from "../assets/HomePage/Ads.jpeg";
+import GraphicDesigner from "../assets/HomePage/GraphicDesigner.jpeg";
+import VideoEditor from "../assets/HomePage/VideoEditor.jpeg";
+import SocialMedia from "../assets/HomePage/SocialMediaManagement.jpeg";
+import WebsiteDevelopment from "../assets/HomePage/WebsiteDevelopment.jpeg";
 export default function MainServicesSection() {
   const services = [
     {
       title: "Social Media Management",
+      id: "social",
       subtitle: "Your brand deserves more than inconsistent posting.",
       description: "We handle your complete social media presence with strategy, planning, and professional execution.",
       includes: [
@@ -16,10 +21,11 @@ export default function MainServicesSection() {
         "Performance Tracking"
       ],
       goal: "Build a strong, consistent & growth-focused presence.",
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&q=80",
+      image: SocialMedia,
     },
     {
       title: "Reels & Short-Form Video Editing",
+      id: "video",
       subtitle: "Attention spans are short. Impact matters.",
       description: "We create scroll-stopping reels designed to boost reach, engagement & brand recall.",
       includes: [
@@ -30,10 +36,11 @@ export default function MainServicesSection() {
         "High-Retention Structure"
       ],
       goal: "Increase visibility & attract new audiences.",
-      image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1200&q=80",
+      image: VideoEditor,
     },
     {
       title: "Branding & Graphic Designing",
+      id: "branding",
       subtitle: "Your brand identity is your first impression.",
       description: "We design visuals that make your business look premium, trustworthy, and memorable.",
       includes: [
@@ -44,10 +51,11 @@ export default function MainServicesSection() {
         "Marketing Graphics"
       ],
       goal: "Make your brand stand out professionally.",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80",
+      image: GraphicDesigner,
     },
     {
       title: "Website Development",
+      id: "website",
       subtitle: "Your website should convert, not just exist.",
       description: "We build modern, responsive, and conversion-focused websites that reflect your brand and drive inquiries.",
       includes: [
@@ -58,10 +66,11 @@ export default function MainServicesSection() {
         "Contact & Inquiry Integration"
       ],
       goal: "Turn visitors into paying clients.",
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&q=80",
+      image: WebsiteDevelopment,
     },
     {
       title: "Paid Ads Management",
+      id: "ads",
       subtitle: "Growth needs strategy. Not guesswork.",
       description: "We create data-driven ad campaigns designed to generate quality leads and maximize ROI.",
       includes: [
@@ -72,10 +81,11 @@ export default function MainServicesSection() {
         "Performance Monitoring"
       ],
       goal: "Generate leads, sales & measurable results.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
+      image: Ads,
     },
     {
       title: "Custom Marketing Solutions",
+      id: "custom",
       subtitle: "Every business is different.",
       description: "We also offer customized marketing strategies based on your specific goals and industry.",
       includes: [
@@ -135,6 +145,7 @@ export default function MainServicesSection() {
             return (
               <motion.div
                 key={index}
+              
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -142,6 +153,7 @@ export default function MainServicesSection() {
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-base p-8 rounded-2xl shadow-lg ${
                   isEven ? '' : 'lg:grid-flow-dense'
                 }`}
+                id={service.id}
               >
                 
                 {/* Image Side */}

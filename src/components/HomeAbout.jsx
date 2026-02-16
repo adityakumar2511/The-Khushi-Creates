@@ -3,7 +3,7 @@ import { FaRocket, FaUsers, FaChartLine, FaHeart } from "react-icons/fa";
 
 export default function HomeAbout() {
   return (
-    <section className="w-full bg-base px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
+    <section className="w-full bg-[#E2ECB1] px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
       <div className="max-w-7xl mx-auto">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -33,9 +33,9 @@ export default function HomeAbout() {
               We position brands to stand out, attract the right audience, and convert consistently.
             </p>
 
-            <div className="mt-8 inline-flex items-center gap-3 bg-primary/10 rounded-2xl px-6 py-4">
+            <div className="mt-8 inline-flex items-center gap-3 bg-dark rounded-2xl px-6 py-4">
               <FaHeart className="text-primary text-2xl" />
-              <p className="font-heading text-lg md:text-xl font-bold text-dark">
+              <p className="font-heading text-lg md:text-xl font-bold text-white">
                 Your growth is our priority.
               </p>
             </div>
