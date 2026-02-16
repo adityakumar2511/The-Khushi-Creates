@@ -46,17 +46,17 @@ export default function Footer() {
 
             {/* Logo & About */}
             <div className="lg:col-span-4 space-y-3 center">
-              <div className="flex items-center gap-3 justify-center lg:justify-start">
+              <div className="flex items-center gap-3 justify-lefts lg:justify-start">
                 <img src={logo} alt="BrandCreates Logo" className="h-12 w-auto" />
               </div>
 
-              <p className="font-body text-lg leading-relaxed max-w-md text-base text-center lg:text-left pt-4">
+              <p className="font-body text-lg leading-relaxed max-w-md text-base text-left  pt-4">
                 We are a creative digital marketing agency dedicated to helping brands grow
                 their online presence through innovative strategies and compelling content.
               </p>
 
               {/* Social Links */}
-              <div className="flex gap-4 pt-1 lg:justify-start justify-center">
+              <div className="flex gap-4 pt-1 lg:justify-start justify-left">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
@@ -111,11 +111,11 @@ export default function Footer() {
 
             {/* Contact */}
             <div className="lg:col-span-3">
-              <h3 className="text-3xl font-bold font-heading mb-3 text-base text-center lg:text-left">
+              <h3 className="text-3xl font-bold font-heading mb-3 text-base text-left lg:text-left">
                 Get in Touch
               </h3>
-              <ul className="space-y-3 text-lg text-base/80 text-center lg:text-left">
-                <li className="flex gap-3 items-center justify-center lg:justify-start">
+              <ul className="space-y-3 text-lg text-base/80 text-left lg:text-left">
+                <li className="flex gap-3 items-center justify-left lg:justify-start">
                   <FaEnvelope className="text-primary mt-1 w-5 h-5 flex-shrink-0" />
                   <a
                     href="mailto:thekhushicreates@gmail.com"
@@ -124,7 +124,7 @@ export default function Footer() {
                     thekhushicreates@gmail.com
                   </a>
                 </li>
-                <li className="flex gap-3 items-start justify-center lg:justify-start">
+                <li className="flex gap-3 items-start justify-left lg:justify-start">
                   <FaPhone className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                   <span className="font-body flex flex-col gap-1">
                     <a href="tel:+916387297711" className="hover:text-primary transition">+91 6387297711</a>
@@ -132,7 +132,7 @@ export default function Footer() {
                     <a href="tel:+918887522315" className="hover:text-primary transition">+91 8887522315</a>
                   </span>
                 </li>
-                <li className="flex gap-3 items-center justify-center lg:justify-start">
+                <li className="flex gap-3 items-center justify-left lg:justify-start">
                   <FaMapMarkerAlt className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                   <span className="font-body hover:text-primary transition">Prayagraj Uttar Pradesh, India</span>
                 </li>
