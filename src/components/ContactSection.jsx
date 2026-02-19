@@ -11,7 +11,15 @@ import {
     FaMapMarkerAlt,
 } from 'react-icons/fa';
 
+// Hook to detect mobile
+function useIsMobile() {
+    if (typeof window === "undefined") return false;
+    return window.innerWidth < 1024;
+}
+
 export default function ContactSection() {
+    const isMobile = useIsMobile();
+
     const [formData, setFormData] = useState({
         fullName: "",
         businessName: "",
@@ -23,7 +31,7 @@ export default function ContactSection() {
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+    const [submitStatus, setSubmitStatus] = useState(null);
 
     const socialLinks = [
         { name: "Facebook", icon: FaFacebookF, url: "https://www.facebook.com/Thekhushicreates/" },
@@ -33,10 +41,7 @@ export default function ContactSection() {
     ];
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
@@ -44,12 +49,10 @@ export default function ContactSection() {
         setIsSubmitting(true);
         setSubmitStatus(null);
 
-        // EmailJS configuration
-        const serviceID = 'service_hwuj8as'; // Replace with your EmailJS service ID
-        const templateID = 'template_irv02uj'; // Replace with your EmailJS template ID
-        const publicKey = '99zEqRuAQi-zgzoPV'; // Replace with your EmailJS public key
+        const serviceID = 'service_hwuj8as';
+        const templateID = 'template_irv02uj';
+        const publicKey = '99zEqRuAQi-zgzoPV';
 
-        // Template parameters
         const templateParams = {
             from_name: formData.fullName,
             business_name: formData.businessName,
@@ -58,59 +61,52 @@ export default function ContactSection() {
             services: formData.services,
             budget: formData.budget,
             goals: formData.goals,
-            to_email: 'thekhushicreates@gmail.com' // Your receiving email
+            to_email: 'thekhushicreates@gmail.com'
         };
 
         try {
-            const response = await emailjs.send(
-                serviceID,
-                templateID,
-                templateParams,
-                publicKey
-            );
-
+            const response = await emailjs.send(serviceID, templateID, templateParams, publicKey);
             console.log('Email sent successfully!', response.status, response.text);
             setSubmitStatus('success');
-            
-            // Reset form
             setFormData({
-                fullName: "",
-                businessName: "",
-                contactNumber: "",
-                email: "",
-                services: "",
-                budget: "",
-                goals: ""
+                fullName: "", businessName: "", contactNumber: "",
+                email: "", services: "", budget: "", goals: ""
             });
-
-            // Clear success message after 5 seconds
             setTimeout(() => setSubmitStatus(null), 5000);
-
         } catch (error) {
             console.error('Failed to send email:', error);
             setSubmitStatus('error');
-            
-            // Clear error message after 5 seconds
             setTimeout(() => setSubmitStatus(null), 5000);
         } finally {
             setIsSubmitting(false);
         }
     };
 
+    // Animation variants — mobile: fade+up | desktop: fade+x
+    const leftVariant = {
+        hidden: isMobile ? { opacity: 0, y: 40 } : { opacity: 0, x: -40 },
+        visible: { opacity: 1, x: 0, y: 0 },
+    };
+
+    const rightVariant = {
+        hidden: isMobile ? { opacity: 0, y: 40 } : { opacity: 0, x: 40 },
+        visible: { opacity: 1, x: 0, y: 0 },
+    };
+
     return (
-        <section className="w-full bg-base px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
+        <section className="w-full overflow-x-hidden bg-base px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
             <div className="max-w-7xl mx-auto">
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
 
                     {/* LEFT CONTENT */}
                     <motion.div
-                        initial={{ opacity: 0, x: -40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        variants={leftVariant}
+                        initial="hidden"
+                        whileInView="visible"
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        {/* Heading */}
                         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-dark leading-tight mb-6">
                             Let's Grow Your Brand Together.
                         </h2>
@@ -121,11 +117,9 @@ export default function ContactSection() {
                                 <br />
                                 Looking to scale your business online?
                             </p>
-
                             <p className="font-body text-base md:text-lg text-dark leading-relaxed">
                                 We'd love to understand your goals and create a strategy that delivers real results.
                             </p>
-
                             <p className="font-body text-base md:text-lg text-dark leading-relaxed font-semibold">
                                 At The Khushi Creates, we believe every successful brand starts with the right conversation.
                             </p>
@@ -143,11 +137,7 @@ export default function ContactSection() {
                                 <div className="flex items-start gap-4">
                                     <motion.div
                                         animate={{ rotate: 100 }}
-                                        transition={{
-                                            duration: 0,
-                                            repeat: 1,
-                                            ease: "linear"
-                                        }}
+                                        transition={{ duration: 0, repeat: 1, ease: "linear" }}
                                         className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0"
                                     >
                                         <FaPhone className="text-white text-lg" />
@@ -169,10 +159,7 @@ export default function ContactSection() {
                                     </div>
                                     <div>
                                         <h4 className="font-heading font-semibold text-dark mb-2">Email</h4>
-                                        <a
-                                            href="mailto:thekhushicreates@gmail.com"
-                                            className="font-body text-dark hover:text-primary transition"
-                                        >
+                                        <a href="mailto:thekhushicreates@gmail.com" className="font-body text-dark hover:text-primary transition">
                                             thekhushicreates@gmail.com
                                         </a>
                                     </div>
@@ -209,19 +196,18 @@ export default function ContactSection() {
 
                             </div>
                         </div>
-
                     </motion.div>
 
                     {/* RIGHT FORM */}
                     <motion.div
-                        initial={{ opacity: 0, x: 40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        variants={rightVariant}
+                        initial="hidden"
+                        whileInView="visible"
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         <div className="bg-primary rounded-2xl p-8 md:p-10 shadow-2xl">
 
-                            {/* Form Heading */}
                             <div className="mb-8">
                                 <h3 className="font-heading text-2xl md:text-3xl font-bold text-base mb-3 flex items-center gap-2">
                                     Book a Free Strategy Consultation
@@ -231,7 +217,6 @@ export default function ContactSection() {
                                 </p>
                             </div>
 
-                            {/* Success/Error Messages */}
                             {submitStatus === 'success' && (
                                 <div className="mb-6 p-4 bg-green-500 text-white rounded-lg font-body">
                                     ✓ Thank you! We'll get back to you within 24 hours.
@@ -243,88 +228,53 @@ export default function ContactSection() {
                                 </div>
                             )}
 
-                            {/* Form */}
                             <form onSubmit={handleSubmit} className="space-y-5">
 
-                                {/* Full Name */}
                                 <div>
-                                    <label className="block font-body text-white mb-2">
-                                        Full Name *
-                                    </label>
+                                    <label className="block font-body text-white mb-2">Full Name *</label>
                                     <input
-                                        type="text"
-                                        name="fullName"
-                                        value={formData.fullName}
-                                        onChange={handleChange}
-                                        required
-                                        disabled={isSubmitting}
+                                        type="text" name="fullName" value={formData.fullName}
+                                        onChange={handleChange} required disabled={isSubmitting}
                                         className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body bg-white text-dark disabled:opacity-50"
                                         placeholder="Enter your full name"
                                     />
                                 </div>
 
-                                {/* Business Name */}
                                 <div>
-                                    <label className="block font-body text-white mb-2">
-                                        Business Name *
-                                    </label>
+                                    <label className="block font-body text-white mb-2">Business Name *</label>
                                     <input
-                                        type="text"
-                                        name="businessName"
-                                        value={formData.businessName}
-                                        onChange={handleChange}
-                                        required
-                                        disabled={isSubmitting}
+                                        type="text" name="businessName" value={formData.businessName}
+                                        onChange={handleChange} required disabled={isSubmitting}
                                         className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body bg-white text-dark disabled:opacity-50"
                                         placeholder="Enter your business name"
                                     />
                                 </div>
 
-                                {/* Contact Number */}
                                 <div>
-                                    <label className="block font-body text-white mb-2">
-                                        Contact Number *
-                                    </label>
+                                    <label className="block font-body text-white mb-2">Contact Number *</label>
                                     <input
-                                        type="tel"
-                                        name="contactNumber"
-                                        value={formData.contactNumber}
-                                        onChange={handleChange}
-                                        required
-                                        disabled={isSubmitting}
+                                        type="tel" name="contactNumber" value={formData.contactNumber}
+                                        onChange={handleChange} required disabled={isSubmitting}
                                         className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body bg-white text-dark disabled:opacity-50"
                                         placeholder="+91 XXXXXXXXXX"
                                     />
                                 </div>
 
-                                {/* Email */}
                                 <div>
-                                    <label className="block font-body text-white mb-2">
-                                        Email Address *
-                                    </label>
+                                    <label className="block font-body text-white mb-2">Email Address *</label>
                                     <input
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                        disabled={isSubmitting}
+                                        type="email" name="email" value={formData.email}
+                                        onChange={handleChange} required disabled={isSubmitting}
                                         className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body bg-white text-dark disabled:opacity-50"
                                         placeholder="your@email.com"
                                     />
                                 </div>
 
-                                {/* Services Required */}
                                 <div>
-                                    <label className="block font-body text-white mb-2">
-                                        Services Required *
-                                    </label>
+                                    <label className="block font-body text-white mb-2">Services Required *</label>
                                     <select
-                                        name="services"
-                                        value={formData.services}
-                                        onChange={handleChange}
-                                        required
-                                        disabled={isSubmitting}
+                                        name="services" value={formData.services}
+                                        onChange={handleChange} required disabled={isSubmitting}
                                         className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body bg-white text-dark disabled:opacity-50"
                                     >
                                         <option value="">Select a service</option>
@@ -337,17 +287,11 @@ export default function ContactSection() {
                                     </select>
                                 </div>
 
-                                {/* Budget */}
                                 <div>
-                                    <label className="block font-body text-white mb-2">
-                                        Monthly Marketing Budget *
-                                    </label>
+                                    <label className="block font-body text-white mb-2">Monthly Marketing Budget *</label>
                                     <select
-                                        name="budget"
-                                        value={formData.budget}
-                                        onChange={handleChange}
-                                        required
-                                        disabled={isSubmitting}
+                                        name="budget" value={formData.budget}
+                                        onChange={handleChange} required disabled={isSubmitting}
                                         className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body bg-white text-dark disabled:opacity-50"
                                     >
                                         <option value="">Select your budget</option>
@@ -358,39 +302,29 @@ export default function ContactSection() {
                                     </select>
                                 </div>
 
-                                {/* Business Goals */}
                                 <div>
-                                    <label className="block font-body text-white mb-2">
-                                        Tell us about your business goals *
-                                    </label>
+                                    <label className="block font-body text-white mb-2">Tell us about your business goals *</label>
                                     <textarea
-                                        name="goals"
-                                        value={formData.goals}
-                                        onChange={handleChange}
-                                        required
-                                        disabled={isSubmitting}
+                                        name="goals" value={formData.goals}
+                                        onChange={handleChange} required disabled={isSubmitting}
                                         rows="4"
                                         className="w-full px-4 py-3 border-2 border-dark/20 rounded-lg focus:border-dark focus:outline-none font-body resize-none bg-white text-dark disabled:opacity-50"
                                         placeholder="What are your main goals? What challenges are you facing?"
                                     />
                                 </div>
 
-                                {/* Submit Button */}
                                 <button
-                                    type="submit"
-                                    disabled={isSubmitting}
+                                    type="submit" disabled={isSubmitting}
                                     className="w-full font-body font-bold py-4 rounded-lg transition shadow-lg text-lg bg-white text-dark hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {isSubmitting ? 'Sending...' : 'Schedule My Free Consultation'}
                                 </button>
 
                             </form>
-
                         </div>
                     </motion.div>
 
                 </div>
-
             </div>
         </section>
     );

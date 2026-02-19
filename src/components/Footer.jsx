@@ -19,12 +19,12 @@ const footerLinks = {
     { name: "Contact", path: "/contact" },
   ],
   services: [
-    { name: "Social Media Management", path: "/service#social" },
-    { name: "Reels & Short-Form Video Editing", path: "/service#video" },
-    { name: "Branding & Graphic Designing", path: "/service#branding" },
-    { name: "Website Development", path: "/service#website" },
-    { name: "Paid Ads Management", path: "/service#ads" },
-    { name: "Custom Marketing Solutions", path: "/service#custom" },
+    { name: "Social Media Management", path: "/services#social" },
+    { name: "Reels & Short-Form Video Editing", path: "/services#video" },
+    { name: "Branding & Graphic Designing", path: "/services#branding" },
+    { name: "Website Development", path: "/services#website" },
+    { name: "Paid Ads Management", path: "/services#ads" },
+    { name: "Custom Marketing Solutions", path: "/services#custom" },
   ],
 };
 
@@ -41,22 +41,24 @@ export default function Footer() {
       <footer className="w-full bg-dark text-base shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-          {/* Top Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 mb-8">
+          {/*
+            Layout:
+            Mobile  (<768px)   → 1 column (sab neeche)
+            Tablet  (768-1279) → 2 columns: [Logo+About | Company] [Services | Contact]
+            Desktop (≥1280px)  → 4 columns
+          */}
+          <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-8 2xl:gap-12 mb-8">
 
-            {/* Logo & About */}
-            <div className="lg:col-span-4 space-y-3 center">
-              <div className="flex items-center gap-3 justify-lefts lg:justify-start">
+            {/* 1. Logo & About */}
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
                 <img src={logo} alt="BrandCreates Logo" className="h-12 w-auto" />
               </div>
-
-              <p className="font-body text-lg leading-relaxed max-w-md text-base text-left  pt-4">
+              <p className="font-body text-md md:text-lg leading-relaxed text-base text-left pt-4">
                 We are a creative digital marketing agency dedicated to helping brands grow
                 their online presence through innovative strategies and compelling content.
               </p>
-
-              {/* Social Links */}
-              <div className="flex gap-4 pt-1 lg:justify-start justify-left">
+              <div className="flex gap-4 pt-1 justify-start">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
@@ -71,9 +73,9 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Company */}
-            <div className="lg:col-span-2">
-              <h3 className="text-3xl font-bold font-heading mb-3 text-base text-left">
+            {/* 2. Company */}
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold font-heading mb-3 text-base text-left">
                 Company
               </h3>
               <ul className="space-y-2 font-body text-left">
@@ -81,7 +83,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <Link
                       to={link.path}
-                      className="text-lg text-base/80 hover:text-base hover:font-semibold transition"
+                      className="text-md md:text-lg text-base/80 hover:text-base hover:font-semibold transition"
                     >
                       {link.name}
                     </Link>
@@ -90,9 +92,9 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Services */}
-            <div className="lg:col-span-3">
-              <h3 className="text-3xl font-bold font-heading mb-3 text-left text-base">
+            {/* 3. Services */}
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold font-heading mb-3 text-left text-base">
                 Services
               </h3>
               <ul className="space-y-2 text-left font-body">
@@ -100,7 +102,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <Link
                       to={link.path}
-                      className="text-lg text-base/80 hover:text-base hover:font-semibold transition"
+                      className="text-md md:text-lg text-base/80 hover:text-base hover:font-semibold transition"
                     >
                       {link.name}
                     </Link>
@@ -109,22 +111,22 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Contact */}
-            <div className="lg:col-span-3">
-              <h3 className="text-3xl font-bold font-heading mb-3 text-base text-left lg:text-left">
+            {/* 4. Contact */}
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold font-heading mb-3 text-base text-left">
                 Get in Touch
               </h3>
-              <ul className="space-y-3 text-lg text-base/80 text-left lg:text-left">
-                <li className="flex gap-3 items-center justify-left lg:justify-start">
+              <ul className="space-y-3 text-md md:text-lg text-base/80 text-left">
+                <li className="flex gap-3 items-center">
                   <FaEnvelope className="text-primary mt-1 w-5 h-5 flex-shrink-0" />
                   <a
                     href="mailto:thekhushicreates@gmail.com"
-                    className="font-body text-base hover:text-primary transition"
+                    className="font-body text-base hover:text-primary transition break-all"
                   >
                     thekhushicreates@gmail.com
                   </a>
                 </li>
-                <li className="flex gap-3 items-start justify-left lg:justify-start">
+                <li className="flex gap-3 items-start">
                   <FaPhone className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                   <span className="font-body flex flex-col gap-1">
                     <a href="tel:+916387297711" className="hover:text-primary transition">+91 6387297711</a>
@@ -132,19 +134,23 @@ export default function Footer() {
                     <a href="tel:+918887522315" className="hover:text-primary transition">+91 8887522315</a>
                   </span>
                 </li>
-                <li className="flex gap-3 items-center justify-left lg:justify-start">
+                <li className="flex gap-3 items-center">
                   <FaMapMarkerAlt className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                   <span className="font-body hover:text-primary transition">Prayagraj Uttar Pradesh, India</span>
                 </li>
               </ul>
             </div>
+
           </div>
 
           {/* Bottom */}
           <div className="border-t border-base/20 pt-4">
-            <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-md text-base/70 font-body">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-sm md:text-md text-base/70 font-body">
               <p className="text-center">
-                © {new Date().getFullYear()} The Khushi Creates. All rights reserved. Created By <a href="https://aditya-kumar-2511.vercel.app/" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Aditya Kumar</a>
+                © {new Date().getFullYear()} The Khushi Creates. All rights reserved. Created By{" "}
+                <a href="https://aditya-kumar-2511.vercel.app/" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                  Aditya Kumar
+                </a>
               </p>
             </div>
           </div>

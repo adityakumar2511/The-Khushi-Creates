@@ -1,19 +1,25 @@
 import { motion } from "framer-motion";
 import { FaPlay } from "react-icons/fa";
 
+function useIsMobile() {
+  if (typeof window === "undefined") return false;
+  return window.innerWidth < 1024;
+}
+
 export default function HeroSection() {
+  const isMobile = useIsMobile();
+
   return (
-    <section className="w-full bg-base px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
+    <section className="w-full overflow-x-hidden bg-base px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
       <div className="max-w-7xl mx-auto">
 
-        {/* MAIN HERO - LEFT CONTENT & RIGHT VIDEO */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
 
           {/* LEFT CONTENT */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: isMobile ? 30 : 0, x: isMobile ? 0 : -30 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             className="text-center lg:text-left"
           >
             <h1 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight text-dark">
@@ -32,15 +38,12 @@ export default function HeroSection() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-              {/* Call Button */}
               <a
                 href="tel:+916387297711"
                 className="bg-primary font-body hover:bg-primary/90 text-white px-8 py-4 rounded-lg font-semibold shadow-md transition text-base md:text-lg text-center"
               >
                 Book a Free Strategy Call
               </a>
-
-              {/* Services Page Link */}
               <a
                 href="/services"
                 className="border-2 font-body border-dark hover:border-primary hover:text-primary text-dark px-8 py-4 rounded-lg font-semibold transition text-base md:text-lg text-center"
@@ -52,19 +55,12 @@ export default function HeroSection() {
 
           {/* RIGHT VIDEO */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, y: isMobile ? 30 : 0, x: isMobile ? 0 : 30 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="relative w-full"
           >
-            {/* Video Container with 16:9 aspect ratio */}
             <div className="relative w-full aspect-video bg-dark/5 rounded-2xl overflow-hidden shadow-2xl">
-
-              {/* Replace this div with your actual video element */}
-              {/* Example: <video src="/path/to/video.mp4" controls className="w-full h-full object-cover" /> */}
-              {/* Or YouTube embed: <iframe src="https://www.youtube.com/embed/VIDEO_ID" className="w-full h-full" allowFullScreen /> */}
-
-              {/* Placeholder - Remove this when adding real video */}
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/20 to-dark/10">
                 <div className="text-center">
                   <motion.div

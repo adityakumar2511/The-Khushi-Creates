@@ -12,13 +12,13 @@ import {
 
 export default function Workwithus() {
   return (
-    <section className="w-full bg-base px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
+    <section className="w-full overflow-x-hidden bg-base px-2 sm:px-4 md:px-10 lg:px-12 py-10 md:py-16">
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-dark">
-            Partner with Prayagraj’s Fastest-Growing Digital Agency
+            Partner with Prayagraj's Fastest-Growing Digital Agency
           </h2>
           <p className="mt-4 font-body text-dark text-md">
             Perfect for startups, e-commerce brands, local shops, and B2B
@@ -29,10 +29,10 @@ export default function Workwithus() {
         {/* Main Grid */}
         <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-          {/* WHO WE SERVE (Left → Right) */}
+          {/* WHO WE SERVE */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true }}
             className="bg-primary rounded-2xl p-10 shadow-[0_12px_32px_rgba(0,0,0,0.08)]"
@@ -43,7 +43,7 @@ export default function Workwithus() {
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <FaRocket className="text-dark text-lg mt-1" />
+                <FaRocket className="text-dark shrink-0 mt-1" style={{ fontSize: "24px" }} />
                 <p className="font-body text-white/80 text-md">
                   <span className="font-semibold text-white">Startups:</span>{" "}
                   SEO + social media to build early traction
@@ -51,7 +51,7 @@ export default function Workwithus() {
               </div>
 
               <div className="flex items-start gap-4">
-                <FaShoppingCart className="text-dark text-lg mt-1" />
+                <FaShoppingCart className="text-dark shrink-0 mt-1" style={{ fontSize: "24px" }} />
                 <p className="font-body text-white/80 text-md">
                   <span className="font-semibold text-white">E-commerce:</span>{" "}
                   High-ROI PPC campaigns that convert
@@ -59,7 +59,7 @@ export default function Workwithus() {
               </div>
 
               <div className="flex items-start gap-4">
-                <FaStore className="text-dark text-lg mt-1" />
+                <FaStore className="text-dark shrink-0 mt-1" style={{ fontSize: "24px" }} />
                 <p className="font-body text-white/80 text-md">
                   <span className="font-semibold text-white">Local Shops:</span>{" "}
                   Geo-targeted ads for footfall & leads
@@ -67,7 +67,7 @@ export default function Workwithus() {
               </div>
 
               <div className="flex items-start gap-4">
-                <FaBriefcase className="text-dark text-lg mt-1" />
+                <FaBriefcase className="text-dark shrink-0 mt-1" style={{ fontSize: "24px" }} />
                 <p className="font-body text-white/80 text-md">
                   <span className="font-semibold text-white">B2B:</span>{" "}
                   LinkedIn ads + email outreach for deal flow
@@ -76,11 +76,11 @@ export default function Workwithus() {
             </div>
           </motion.div>
 
-          {/* ONBOARDING (Right → Left) */}
+          {/* ONBOARDING */}
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
             viewport={{ once: true }}
             className="bg-dark rounded-2xl p-10 shadow-[0_12px_32px_rgba(0,0,0,0.15)]"
           >
@@ -90,7 +90,7 @@ export default function Workwithus() {
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <FaPhoneAlt className="text-primary text-lg mt-1" />
+                <FaPhoneAlt className="text-primary shrink-0 mt-1" style={{ fontSize: "24px" }} />
                 <p className="font-body text-white/80 text-md">
                   <span className="font-semibold text-white">
                     Free 30-min call:
@@ -100,7 +100,7 @@ export default function Workwithus() {
               </div>
 
               <div className="flex items-start gap-4">
-                <FaFileAlt className="text-primary text-lg mt-1" />
+                <FaFileAlt className="text-primary shrink-0 mt-1" style={{ fontSize: "24px" }} />
                 <p className="font-body text-white/80 text-md">
                   <span className="font-semibold text-white">
                     Custom proposal:
@@ -110,7 +110,7 @@ export default function Workwithus() {
               </div>
 
               <div className="flex items-start gap-4">
-                <FaPlayCircle className="text-primary text-lg mt-1" />
+                <FaPlayCircle className="text-primary shrink-0 mt-1" style={{ fontSize: "24px" }} />
                 <p className="font-body text-white/80 text-md">
                   <span className="font-semibold text-white">
                     Campaigns live:
@@ -120,7 +120,7 @@ export default function Workwithus() {
               </div>
 
               <div className="flex items-start gap-4">
-                <FaCalendarCheck className="text-primary text-lg mt-1" />
+                <FaCalendarCheck className="text-primary shrink-0 mt-1" style={{ fontSize: "24px" }} />
                 <p className="font-body text-white/80 text-md">
                   <span className="font-semibold text-white">
                     Weekly optimization:
